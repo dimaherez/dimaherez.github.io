@@ -16,24 +16,44 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Verify the email on page load
+// Handle email verification and password reset on page load
 window.onload = () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const oobCode = urlParams.get('oobCode'); // Get the verification code from the URL
+    const mode = urlParams.get('mode'); // Determine the mode of action
+    const oobCode = urlParams.get('oobCode'); // Get the action code from the URL
 
-    if (oobCode) {
-        // Apply the email verification code
-        applyActionCode(auth, oobCode)
-            .then(() => {
-                // Email verified successfully
-                document.body.innerHTML = "<h1>Email Verified Successfully!</h1>";
-            })
-            .catch((error) => {
-                // Handle errors
-                console.error("Error verifying email:", error);
-                document.body.innerHTML = `<h1>Verification Failed: ${error.message}</h1>`;
-            });
+    if (oobCode && mode) {
+        if (mode === 'verifyEmail') {
+            // Email verification flow
+            applyActionCode(auth, oobCode)
+                .then(() => {
+                    document.body.innerHTML = "<h1>Email Verified Successfully!</h1><a href=\"https:\\\\leihoma.app\">link text</a>";
+                })
+                .catch((error) => {
+                    console.error("Error verifying email:", error);
+                    document.body.innerHTML = `<h1>Verification Failed: ${error.message}</h1>`;
+                });
+        } else if (mode === 'resetPassword') {
+            // Password reset flow
+            const newPassword = prompt("Enter your new password:");
+
+            if (newPassword) {
+                confirmPasswordReset(auth, oobCode, newPassword)
+                    .then(() => {
+                        document.body.innerHTML = "<h1>Password Reset Successfully!</h1><a href=\"https:\\\\leihoma.app\">Go to Login</a>";
+                    })
+                    .catch((error) => {
+                        console.error("Error resetting password:", error);
+                        document.body.innerHTML = `<h1>Password Reset Failed: ${error.message}</h1>`;
+                    });
+            } else {
+                document.body.innerHTML = "<h1>Password reset cancelled. No password provided.</h1>";
+            }
+        } else {
+            document.body.innerHTML = "<h1>Invalid action mode.</h1>";
+        }
     } else {
-        document.body.innerHTML = "<h1>No verification code found in the URL.</h1>";
+        document.body.innerHTML = "<h1>No action code or mode found in the URL.</h1>";
     }
 };
+
