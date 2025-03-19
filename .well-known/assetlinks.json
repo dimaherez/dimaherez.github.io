@@ -1,10 +1,11 @@
-[{
+[
+  {
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
       "package_name": "com.deviark.leihoma",
       "sha256_cert_fingerprints":
-      ["B3:20:1B:34:56:BE:6E:7A:C5:9E:96:92:13:07:11:35:77:0C:1F:28:87:AD:2C:55:28:27:29:D6:72:76:6E:AC"]
+      ["8B:1E:6E:0D:B3:84:A8:A3:9C:89:B5:F5:35:5D:64:10:74:8F:21:A7:23:42:C9:62:6B:F5:24:E4:21:3B:2A:85"]
     }
   },
   {
