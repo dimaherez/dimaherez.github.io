@@ -4,14 +4,6 @@
     "namespace": "android_app",
     "package_name": "com.deviark.leihoma",
     "sha256_cert_fingerprints":
-    ["D1:58:5D:64:B6:4B:A2:0A:8F:D2:7C:E1:A0:41:2D:AD:77:28:1F:B5:DA:29:24:62:E8:3C:79:BF:6E:E5:89:E3"]
+    ["D1:58:5D:64:B6:4B:A2:0A:8F:D2:7C:E1:A0:41:2D:AD:77:28:1F:B5:DA:29:24:62:E8:3C:79:BF:6E:E5:89:E3", "8B:1E:6E:0D:B3:84:A8:A3:9C:89:B5:F5:35:5D:64:10:74:8F:21:A7:23:42:C9:62:6B:F5:24:E4:21:3B:2A:85"]
   }
-},
-{
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.myapp.app",
-      "sha256_cert_fingerprints": ["8B:1E:6E:0D:B3:84:A8:A3:9C:89:B5:F5:35:5D:64:10:74:8F:21:A7:23:42:C9:62:6B:F5:24:E4:21:3B:2A:85"]
-    }
 }]
